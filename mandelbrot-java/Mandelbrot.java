@@ -28,7 +28,6 @@ public class Mandelbrot extends RecursiveTask<boolean[]>
 				for(int i = this.xL; i < this.xH; i++) {
 					for(int j = this.yL; j < this.yH; j++) {
 						Complex c = new Complex(-2 + ((double) i/ (double) this.x) * 3, -1 + ((double) j/ (double) this.y) * 2);
-						// ds.writeBoolean(mandelbrot(c, Math.sqrt(2)) < 80 ? true : false);
 						pixels[i + j] = (mandelbrot(c, Math.sqrt(2)) < 80 ? true : false);
 					}
 				}
@@ -42,9 +41,9 @@ public class Mandelbrot extends RecursiveTask<boolean[]>
 				mB.fork();
 
 				boolean[] mApixels = mA.join();
-                boolean[] mBpixels = mB.join();
-                System.arraycopy(this.pixels, 0, mApixels, 0, mApixels.length);
-                System.arraycopy(this.pixels, mApixels.length, mBpixels, 0, mBpixels.length);
+                		boolean[] mBpixels = mB.join();
+                		System.arraycopy(this.pixels, 0, mApixels, 0, mApixels.length);
+                		System.arraycopy(this.pixels, mApixels.length, mBpixels, 0, mBpixels.length);
 			}
 		} else {
 			int yMid = (this.yL + this.yH) / 2;
@@ -55,8 +54,8 @@ public class Mandelbrot extends RecursiveTask<boolean[]>
 			mA.fork();
 			mB.fork();
 
-            boolean[] mApixels = mA.join();
-            boolean[] mBpixels = mB.join();
+            		boolean[] mApixels = mA.join();
+            		boolean[] mBpixels = mB.join();
 			System.arraycopy(this.pixels, 0, mApixels, 0, mApixels.length);
 			System.arraycopy(this.pixels, mApixels.length, mBpixels, 0, mBpixels.length);
 		}
