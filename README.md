@@ -1,4 +1,3 @@
-This is a sentence.
-This is a second sentence.
-This is a third sentence.
-This is a fourth sentence.
+#### Mandelbrot Generators
+
+A small collection of programs in Java, Python and processingJS which generate mandelbrot sets.
